@@ -1,6 +1,6 @@
-# neurolab-hadoop-spark
+# lab-hadoop-spark
 
-![image](https://user-images.githubusercontent.com/115451707/196919992-edcfea8b-e3f6-4f35-9398-43be66b5622d.png)
+<!-- ![image](https://user-images.githubusercontent.com/115451707/196919992-edcfea8b-e3f6-4f35-9398-43be66b5622d.png) -->
 
 
 ### 1. Validate if hadoop is working or not
@@ -41,9 +41,9 @@ python demo.py
 
 ## URL to view data in UI:
 
-Spark Master - <your_app_name>.ineuron.app:8080
+Spark Master - <your_app_name>.pwskills.app:8080
 
-History Server - <your_app_name>.ineuron.app:18080
+History Server - <your_app_name>.pwskills.app:18080
 
-Spark Worker Node - <your_app_name>.ineuron.app:8081
+Spark Worker Node - <your_app_name>.pwskills.app:8081
 
