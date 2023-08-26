@@ -80,3 +80,22 @@ if __name__ == '__main__':
 
     df3.filter(col('SALARY')<5000).show(10)
 
+    df3.filter(col('SALARY')<5000).select("EMPLOYEE_ID","FIRST_NAME","SALARY").show(10)
+
+    df3.filter((col('DEPARTMENT_ID')==50) & (col('SALARY')<5000)).select("EMPLOYEE_ID","FIRST_NAME","SALARY","DEPARTMENT_ID").show(10)
+
+    df3.filter('DEPARTMENT_ID<>50').select("EMPLOYEE_ID","FIRST_NAME","SALARY","DEPARTMENT_ID").show(10)
+
+    df3.filter('DEPARTMENT_ID != 50').select("EMPLOYEE_ID","FIRST_NAME","SALARY","DEPARTMENT_ID").show(12)
+
+    df3.filter("DEPARTMENT_ID == 50 and SALARY < 5000").select("EMPLOYEE_ID","FIRST_NAME","SALARY","DEPARTMENT_ID").show(10)
+
+    df3.distinct().show()
+
+    df3.dropDuplicates().show(12)
+
+    df3.dropDuplicates(["DEPARTMENT_ID", "HIRE_DATE"]).show(10)
+
+    df3.dropDuplicates(["DEPARTMENT_ID", "HIRE_DATE"]).select("EMPLOYEE_ID","HIRE_DATE","DEPARTMENT_ID").show(11)
+
+    df3.dropDuplicates(["DEPARTMENT_ID", "HIRE_DATE"]).select("EMPLOYEE_ID").show(11)
