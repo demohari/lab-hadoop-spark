@@ -1,5 +1,10 @@
+#from hdfs import InsecureClient
+
+
+
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType,StructField,StringType,IntegerType
+from pyspark.sql.types import StructType,StructField,StringType,IntegerType 
+from pyspark.sql.functions import col
 if __name__ == '__main__':
 
     #Creating spark session
@@ -29,14 +34,22 @@ if __name__ == '__main__':
     df1.show(truncate=False)
     df1.printSchema()'''
 
-    '''df2=spark.read.option('header',True).csv('/config/workspace/departments.csv')
+    df2=spark.read.option('header',True).csv('/departments.csv')
     df2.show(truncate=False)
-    df2.printSchema()'''
+    df2.printSchema()
 
-    df3=spark.read.option('header',True).option('inferSchema',True).csv('/config/workspace/departments.csv')
+    df3=spark.read.option('header',True).option('inferSchema',True).csv('/employees.csv')
     df3.show(truncate=False)
     df3.printSchema()
 
-    hdfs dfs -put 
-    empdf.show(truncate=False)
-    empdf.printSchema()
+    df3.select('*').show()
+    df3.select('EMPLOYEE_ID','FIRST_NAME').show()
+    df3.select(df3.EMPLOYEE_ID,df3.FIRST_NAME).show()
+    df3.select(df3['EMPLOYEE_ID'],df3['FIRST_NAME']).show()
+
+    df3.select(col('EMPLOYEE_ID'),col('FIRST_NAME')).show()
+
+
+    
+    df3.select(col('EMPLOYEE_ID').alias('emp_id'),col('FIRST_NAME').alias('f_name')).show()
+    df3.select('EMPLOYEE_ID','FIRST_NAME','SALARY').withColumn('NEW_SALARY',col('SALARY')+1000).show()
