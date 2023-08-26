@@ -53,3 +53,30 @@ if __name__ == '__main__':
     
     df3.select(col('EMPLOYEE_ID').alias('emp_id'),col('FIRST_NAME').alias('f_name')).show()
     df3.select('EMPLOYEE_ID','FIRST_NAME','SALARY').withColumn('NEW_SALARY',col('SALARY')+1000).show()
+
+    df3.write.format("parquet").mode("overwrite").option("compression", "gzip").save("/copy_from_pyspark")
+
+    #hdfs dfs -cat /copy_from_pyspark/*
+    print('-------------------------------')
+    
+    df4=spark.read.option('header',True).option('inferSchema',True).parquet('/copy_from_pyspark')
+    print('-------------------------------')
+    df4.show(truncate=False)
+    print('-------------------------------')
+    df4.printSchema()
+
+    df3.withColumn('SALARY', col('SALARY')-1000).select('EMPLOYEE_ID','FIRST_NAME','SALARY').show()
+    print('-------------------------------')
+    print('-------------------------------')
+    df3.withColumn('new_SALARY', col('SALARY')-1000).select('EMPLOYEE_ID','FIRST_NAME','new_SALARY').show()
+
+    df3.withColumnRenamed('SALARY','EMP_SALARY').show()
+
+    df3.drop('COMMISSION_PCT').show()
+
+    df3.printSchema()
+
+    df3.filter(col('SALARY')<5000).show()
+
+    df3.filter(col('SALARY')<5000).show(10)
+
