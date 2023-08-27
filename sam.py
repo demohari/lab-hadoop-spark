@@ -5,13 +5,7 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType,StructField,StringType,IntegerType 
 from pyspark.sql.functions import col
-<<<<<<< HEAD
-from pyspark.sql.functions import *
-=======
->>>>>>> c3534930d53a97018be3788cc07817f5c38daa2a
 if __name__ == '__main__':
-
-    #Creating spark session
     spark = SparkSession.builder.appName('demo').getOrCreate()
 
     #Creating list of data to create dataframe
@@ -121,3 +115,4 @@ if __name__ == '__main__':
 
 =======
 >>>>>>> c3534930d53a97018be3788cc07817f5c38daa2a
+df3.select("EMPLOYEE_ID","FIRST_NAME","DEPARTMENT_ID","SALARY").orderBy('SALARY').show()
