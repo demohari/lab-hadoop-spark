@@ -112,5 +112,5 @@ if __name__ == '__main__':
     df3.select(sum('SALARY').alias('sum_salary')).show()
     
 
-    df3.select("EMPLOYEE_ID","FIRST_NAME","DEPARTMENT_ID","SALARY").orderBy('SALARY').show()
+    df3.select("EMPLOYEE_ID","FIRST_NAME","DEPARTMENT_ID","SALARY").orderBy('SALARY').show(5)
     #mpDf.select("EMPLOYEE_ID","FIRST_NAME","DEPARTMENT_ID","SALARY").orderBy("salary").show()
