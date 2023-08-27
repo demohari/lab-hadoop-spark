@@ -4,7 +4,7 @@
 
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType,StructField,StringType,IntegerType 
-from pyspark.sql.functions import col
+from pyspark.sql.functions import *
 if __name__ == '__main__':
     spark = SparkSession.builder.appName('demo').getOrCreate()
 
@@ -97,7 +97,6 @@ if __name__ == '__main__':
     df3.dropDuplicates(["DEPARTMENT_ID", "HIRE_DATE"]).select("EMPLOYEE_ID","HIRE_DATE","DEPARTMENT_ID").show(11)
 
     df3.dropDuplicates(["DEPARTMENT_ID", "HIRE_DATE"]).select("EMPLOYEE_ID").show(11)
-<<<<<<< HEAD
 
     
     rows = df3.count()
@@ -113,6 +112,5 @@ if __name__ == '__main__':
     df3.select(sum('SALARY').alias('sum_salary')).show()
     
 
-=======
->>>>>>> c3534930d53a97018be3788cc07817f5c38daa2a
-df3.select("EMPLOYEE_ID","FIRST_NAME","DEPARTMENT_ID","SALARY").orderBy('SALARY').show()
+    df3.select("EMPLOYEE_ID","FIRST_NAME","DEPARTMENT_ID","SALARY").orderBy('SALARY').show()
+    #mpDf.select("EMPLOYEE_ID","FIRST_NAME","DEPARTMENT_ID","SALARY").orderBy("salary").show()
