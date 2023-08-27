@@ -5,7 +5,10 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType,StructField,StringType,IntegerType 
 from pyspark.sql.functions import col
+<<<<<<< HEAD
 from pyspark.sql.functions import *
+=======
+>>>>>>> c3534930d53a97018be3788cc07817f5c38daa2a
 if __name__ == '__main__':
 
     #Creating spark session
@@ -100,6 +103,7 @@ if __name__ == '__main__':
     df3.dropDuplicates(["DEPARTMENT_ID", "HIRE_DATE"]).select("EMPLOYEE_ID","HIRE_DATE","DEPARTMENT_ID").show(11)
 
     df3.dropDuplicates(["DEPARTMENT_ID", "HIRE_DATE"]).select("EMPLOYEE_ID").show(11)
+<<<<<<< HEAD
 
     
     rows = df3.count()
@@ -115,3 +119,5 @@ if __name__ == '__main__':
     df3.select(sum('SALARY').alias('sum_salary')).show()
     
 
+=======
+>>>>>>> c3534930d53a97018be3788cc07817f5c38daa2a
