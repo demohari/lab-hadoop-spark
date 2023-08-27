@@ -125,3 +125,10 @@ if __name__ == '__main__':
 
     df3.groupBy('DEPARTMENT_ID').max('SALARY').show(5)
     df3.groupBy('DEPARTMENT_ID').min('SALARY').show(6)
+
+    df3.groupBy("DEPARTMENT_ID","JOB_ID").sum('SALARY').show(8)
+
+    df3.printSchema()
+
+    df3.show()
+    df3.groupBy("DEPARTMENT_ID","JOB_ID").sum('SALARY').show()
