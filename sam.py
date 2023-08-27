@@ -114,3 +114,14 @@ if __name__ == '__main__':
 
     df3.select("EMPLOYEE_ID","FIRST_NAME","DEPARTMENT_ID","SALARY").orderBy('SALARY').show(5)
     #mpDf.select("EMPLOYEE_ID","FIRST_NAME","DEPARTMENT_ID","SALARY").orderBy("salary").show()
+
+    df3.select("EMPLOYEE_ID","FIRST_NAME","DEPARTMENT_ID","SALARY").orderBy(col('DEPARTMENT_ID').asc()).show(6)
+    
+    df3.select("EMPLOYEE_ID","FIRST_NAME","DEPARTMENT_ID","SALARY").orderBy(col('DEPARTMENT_ID').asc(),col('SALARY').desc()).show(7)
+    
+    df3.select("EMPLOYEE_ID","FIRST_NAME","DEPARTMENT_ID","SALARY").orderBy(col('DEPARTMENT_ID').asc(),col('SALARY').asc()).show(7)
+
+    df3.groupBy('DEPARTMENT_ID').sum('SALARY').show(8)
+
+    df3.groupBy('DEPARTMENT_ID').max('SALARY').show(5)
+    df3.groupBy('DEPARTMENT_ID').min('SALARY').show(6)
