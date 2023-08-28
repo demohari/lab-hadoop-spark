@@ -132,3 +132,11 @@ if __name__ == '__main__':
 
     df3.show()
     df3.groupBy("DEPARTMENT_ID","JOB_ID").sum('SALARY').show()
+
+    df3.groupBy("DEPARTMENT_ID","JOB_ID").sum('SALARY', "EMPLOYEE_ID").show(7)
+    df3.groupBy("DEPARTMENT_ID","JOB_ID").sum('DEPARTMENT_ID','SALARY', "EMPLOYEE_ID").show(8)
+
+    df3.groupBy('DEPARTMENT_ID').agg(sum("SALARY").alias("SUM_SALARY") , /
+    max("SALARY").alias("MAX_SALARY"), min("SALARY").alias("MIN_SALARY") , avg("SALARY").alias("AVG_SALARY")).show()
+
+    
