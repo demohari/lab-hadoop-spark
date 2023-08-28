@@ -136,7 +136,9 @@ if __name__ == '__main__':
     df3.groupBy("DEPARTMENT_ID","JOB_ID").sum('SALARY', "EMPLOYEE_ID").show(7)
     df3.groupBy("DEPARTMENT_ID","JOB_ID").sum('DEPARTMENT_ID','SALARY', "EMPLOYEE_ID").show(8)
 
-    df3.groupBy('DEPARTMENT_ID').agg(sum("SALARY").alias("SUM_SALARY") , /
+    df3.groupBy('DEPARTMENT_ID').agg(sum("SALARY").alias("SUM_SALARY") ,\
     max("SALARY").alias("MAX_SALARY"), min("SALARY").alias("MIN_SALARY") , avg("SALARY").alias("AVG_SALARY")).show()
 
-    
+    df = df3.withColumn("EMP_GRADE", when( col("SALARY") > 15000 , "A").when( (col("SALARY") >= 10000) & ( col("SALARY") < 15000), "B").otherwise("C"))
+    df.select("EMPLOYEE_ID", "SALARY", "EMP_GRADE").show(10)
+
