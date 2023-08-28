@@ -142,3 +142,15 @@ if __name__ == '__main__':
     df = df3.withColumn("EMP_GRADE", when( col("SALARY") > 15000 , "A").when( (col("SALARY") >= 10000) & ( col("SALARY") < 15000), "B").otherwise("C"))
     df.select("EMPLOYEE_ID", "SALARY", "EMP_GRADE").show(10)
 
+    df3.createOrReplaceTempView('employee')
+    spark.sql('select * from employee limit 6').show()
+
+    df33 = spark.sql('select employee_id, salary from employee')
+    df33.show(7)
+
+    spark.sql('select DEPARTMENT_ID,sum(SALARY)as sum_salary from employee group by DEPARTMENT_ID').show()
+    deptDf = spark.sql('select * from employee')
+    deptDf.show(7)
+
+    spark.sql('select employee_id, department_id, rank() over(partition by department_id order by salary desc) as rank_salary from employee').show()
+    df3.join(deptDf, df3.DEPARTMENT_ID == deptDf.DEPARTMENT_ID, "inner").show()
